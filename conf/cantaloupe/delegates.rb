@@ -11,6 +11,9 @@
 # versions. Likewise, earlier versions of the script are not compatible with
 # Cantaloupe 4.
 #
+require 'java'
+java_import 'edu.illinois.library.cantaloupe.config.Configuration'
+
 class CustomDelegate
 
   ##
@@ -97,8 +100,15 @@ class CustomDelegate
   #                information response. Return an empty hash to add nothing.
   #
   def extra_iiif2_information_response_keys(options = {})
+    config = Configuration.getInstance
+    prefix = config.getString("HttpSource.BasicLookupStrategy.url_prefix")
+    suffix = config.getString("HttpSource.BasicLookupStrategy.url_suffix")
+    path = File.join(prefix, context['identifier'])
+    if !suffix.nil?
+      path = [path, suffix].join()
+    end
     {
-      'source' =>  "https://raw.githubusercontent.com/LINNAE-project/SFB-Annotator/master/data/jpg/#{context['identifier']}.jpg"
+      'source' => path
     }
 
 =begin

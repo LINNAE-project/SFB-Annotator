@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/image/2/context.json",
-  "@id": "http://localhost:8182/iiif/2/MMNAT01_AF_NNM001001033_001",
+  "@id": "http://localhost:8182/iiif/2/1184",
   "protocol": "http://iiif.io/api/image",
   "width": 2674,
   "height": 2155,
@@ -83,5 +83,5 @@
       ]
     }
   ],
-  "source": "https://raw.githubusercontent.com/LINNAE-project/SFB-Annotator/master/data/jpg/MMNAT01_AF_NNM001001033_001.jpg"
+  "source": "https://demo.dataverse.nl/api/access/datafile/1184"
 }
