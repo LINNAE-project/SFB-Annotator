@@ -1,0 +1,87 @@
+{
+  "@context": "http://iiif.io/api/image/2/context.json",
+  "@id": "http://localhost:8182/iiif/2/MMNAT01_AF_NNM001001033_001",
+  "protocol": "http://iiif.io/api/image",
+  "width": 2674,
+  "height": 2155,
+  "sizes": [
+    {
+      "width": 84,
+      "height": 67
+    },
+    {
+      "width": 167,
+      "height": 135
+    },
+    {
+      "width": 334,
+      "height": 269
+    },
+    {
+      "width": 669,
+      "height": 539
+    },
+    {
+      "width": 1337,
+      "height": 1078
+    },
+    {
+      "width": 2674,
+      "height": 2155
+    }
+  ],
+  "tiles": [
+    {
+      "width": 512,
+      "height": 512,
+      "scaleFactors": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ]
+    }
+  ],
+  "profile": [
+    "http://iiif.io/api/image/2/level2.json",
+    {
+      "formats": [
+        "jpg",
+        "tif",
+        "gif",
+        "png"
+      ],
+      "maxArea": 5762470,
+      "qualities": [
+        "bitonal",
+        "default",
+        "gray",
+        "color"
+      ],
+      "supports": [
+        "regionByPx",
+        "sizeByW",
+        "sizeByWhListed",
+        "cors",
+        "regionSquare",
+        "sizeByDistortedWh",
+        "canonicalLinkHeader",
+        "sizeByConfinedWh",
+        "sizeByPct",
+        "jsonldMediaType",
+        "regionByPct",
+        "rotationArbitrary",
+        "sizeByH",
+        "baseUriRedirect",
+        "rotationBy90s",
+        "profileLinkHeader",
+        "sizeByForcedWh",
+        "sizeByWh",
+        "mirroring"
+      ]
+    }
+  ],
+  "source": "https://raw.githubusercontent.com/LINNAE-project/SFB-Annotator/master/data/jpg/MMNAT01_AF_NNM001001033_001.jpg"
+}
