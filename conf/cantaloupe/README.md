@@ -1,12 +1,23 @@
-### Start Cantaloupe server
+### Clone Cantaloupe repo
 
 ```
 git clone https://github.com/cantaloupe-project/cantaloupe.git
 cd cantaloupe
-mvn clean compile exec:java -Dcantaloupe.config=cantaloupe.properties
 ```
 
-### Summary of server requests
+### Config to set URL prefix/suffix for a remote image repo
+
+`ln -s ../cantaloupe.properties .`
+
+### Config to customize [info.json](https://github.com/LINNAE-project/SFB-Annotator/blob/iss33/conf/cantaloupe/info.json#L86)
+
+`ln -s ../delegates.rb .`
+
+### Start Cantaloupe server
+
+`mvn clean compile exec:java -Dcantaloupe.config=cantaloupe.properties`
+
+### Summary of image repositories and HTTP requests
 
 | Repository | Image info | Source image | Processed image |
 |------------|------------|--------------|-----------------|
