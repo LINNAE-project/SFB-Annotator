@@ -17,6 +17,10 @@ cd cantaloupe
 
 `mvn clean compile exec:java -Dcantaloupe.config=cantaloupe.properties`
 
+### Alternatively, use [Docker](https://github.com/LINNAE-project/docker-cantaloupe)
+
+`docker run --name cantaloupe -p 8182:8182 linnae/cantaloupe:latest`
+
 ### Summary of image repositories and HTTP requests
 
 | Repository | Image info | Source image | Processed image |
