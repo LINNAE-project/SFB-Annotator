@@ -1,3 +1,80 @@
+### Template for annotations
+
+**Table 1.** List of mandatory triples generated with every annotation. The 1 is an identifier for the full record. Should decide how and when this number is generated. 
+
+
+|subject                | predicate                        | object    |           
+|---|---|---
+|`ex:taxon1`            |`rdf:type`                        |`dwc:Taxon`           
+|`ex:identification1`   |`rdf:type`                        |`dwc:Identification`  
+|`ex:organism1`         |`rdf:type`                        |`foaf:Person`         
+|`ex:occurrence1`       |`rdf:type`                        |`dwc:Occurrence`      
+|`ex:event1`            |`rdf:type`                        |`dwc:Event`           
+|`ex:date1`             |`rdf:type`                        |`nhc:Date`            
+|`ex:humanObservation1` |`rdf:type`                        |`dwc:HumanObservation`
+|`ex:location1`         |`rdf:type`                        |`dwc:Location`        |
+|`ex:identifier1`       |`rdf:type`                        |`foaf:Person`         |
+|`ex:recorder1`         |`rdf:type`                        |`foaf:Person`         |
+|`ex:author1`           |`rdf:type`                        |`foaf:Person`         |
+|`ex:taxon1`            |`nhc:scientificNameAuthorship`    |`ex:author1`          |
+|`ex:identification1`   |`dwciri:toTaxon`                  |`ex:taxon1`           |
+|`ex:identification1`   |`dsw:isBasedOn`                   |`ex:humanObservation1`|
+|`ex:identification1`   |`dwciri:identifiedBy`             |`ex:identifier1`      |
+|`ex:organism1`         |`dsw:hasIdentification`           |`ex:identification1`  |
+|`ex:organism1`         |`dsw:hasOccurrence`               |`ex:occurrence1`      |
+|`ex:organism1`         |`dsw:hasDerivative`               |`ex:humanObservation` |
+|`ex:occurrence1`       |`dwciri:recordedBy`               |`ex:recorder1`        |
+|`ex:occurrence1`       |`dsw:atEvent`                     |`ex:event1`           |
+|`ex:occurrence1`       |`dsw:hasEvidence`                 |`ex:humanObservation1`|
+|`ex:occurrence1`       |`dsw:occurrenceOf`                |`ex:organism1`        |
+|`ex:event1`            |`dsw:locatedAt`                   |`ex:location1`        |
+|`ex:event1`            |`nhc:verbatimDate`                |`ex:date1`            |
+|`ex:event1`            |`dsw:eventOf`                     |`ex:occurrence1`      |
+|`ex:humanObservation1` |`dsw:isBasisForId`                |`ex:identification1`  |
+|`ex:humanObservation1` |`dsw:derivedFrom`                 |`ex:organism1`        |
+|`ex:humanObservation1` |`dsw:isEvidenceFor`               |`ex:occurrence1`      |
+
+If possible, any of the ex:type+identifier instances (of type Taxon, or Location) are replaced through the GUI by an existing external IRI
+
+Optional (but recommended) triples ADDITIONALLY generated per annotation type (depending on GUI fields that are filled in for the object. With measurement or fact, there is no extra field in the GUI, as the annotation is of a whole table or paragraph):
+
+**Taxon.**
+
+|subject                | predicate                        | object               |
+|---|---|---
+|`ex:taxon1`            |`nhc:taxonRank`                   |`ex:species`(or other)|
+|`ex:taxon1`            |`nhc:belongsToTaxon`              |`ex:species`(or other)|
+|`ex:taxon1`            |`nhc:belongsToTaxon`              |`ex:taxon2`(any other annotated taxon)|
+
+
+**Location.**
+
+|subject                | predicate                        | object               |
+|---|---|---
+|`ex:location1`         |`dwciri:inDescribedPlace`         |`http://sws.geonames.org/1648473`|
+|`http://sws.geonames.org/1648473` | `rdf:type`            |`gn:Feature`          |
+
+**Measurement (table) 4.**
+
+|subject                | predicate                        | object               |
+|---|---|---
+|`ex:humanObservation1` |`dsw:hasDerivative`               |`ex:measurementOrFact1`  |
+
+**Measurement (anatomical entity).**
+
+|subject                | predicate                        | object                |
+|---|---|---
+|`ex:humanObservation1` |`dsw:hasDerivative`               |`ex:measurementOrFact1` |
+|`ex:measurementOrFact1` |`nhc:measuresOrDescribes`         |`UBERON:0001062`  (a subclass of) |
+
+**Measurement (property or attribute).**
+
+|subject                | predicate                        | object               |
+|---|---|---
+|`ex:humanObservation1`  |`dsw:hasDerivative`               |`ex:measurementOrFact1`  |
+|`ex:measurementOrFact1` |`nhc:measuresOrDescribes`         |`ncit:c20189`  (a subclass of) |
+
+
 ### Use cases
 Field notes are collections of observation records ([`dwc:HumanObservation`](https://dwc.tdwg.org/terms/#humanobservation)) that describe the occurrence ([`dwc:Occurrence`](https://dwc.tdwg.org/terms/#occurrence)) of an organism ([`dwc:Organism`](http://rs.tdwg.org/dwc/terms/Organism)) at a certain location ([`dwc:Location`](https://dwc.tdwg.org/terms/#location)) and date ([`nhc:Date`](http://makingsense.liacs.nl/rdf/nhc-content/2018-04-04.html#Date)). An observation record most often includes  an identification ([`dwc:Identification`](https://dwc.tdwg.org/terms/#identification)) to a taxon ([`dwc:Taxon`](https://dwc.tdwg.org/terms/#taxon)), and accompanying measurements and facts ([`dwc:MeasurementOrFact`](https://dwc.tdwg.org/terms/#measurementorfact), [`UBERON:0001062`](http://purl.obolibrary.org/obo/UBERON_0001062), [`ncit:C20189`](http://purl.obolibrary.org/obo/NCIT_C20189)) that were used for identification. These observation records usually span multiple field notes, but can also be very short utterances such as on page 3: _Sci. Diard Buitenzorg_, most likely referring to the occurrence of another organism with the same identification.
 
