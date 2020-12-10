@@ -3,36 +3,36 @@
 **Table 1.** List of mandatory triples generated with every annotation. The 1 is an identifier for the full record. Should decide how and when this number is generated. 
 
 
-|subject                | predicate                        | object    |           
-|---|---|---
-|`ex:taxon1`            |`rdf:type`                        |`dwc:Taxon`           
-|`ex:identification1`   |`rdf:type`                        |`dwc:Identification`  
-|`ex:organism1`         |`rdf:type`                        |`foaf:Person`         
-|`ex:occurrence1`       |`rdf:type`                        |`dwc:Occurrence`      
-|`ex:event1`            |`rdf:type`                        |`dwc:Event`           
-|`ex:date1`             |`rdf:type`                        |`nhc:Date`            
-|`ex:humanObservation1` |`rdf:type`                        |`dwc:HumanObservation`
-|`ex:location1`         |`rdf:type`                        |`dwc:Location`        |
-|`ex:identifier1`       |`rdf:type`                        |`foaf:Person`         |
-|`ex:recorder1`         |`rdf:type`                        |`foaf:Person`         |
-|`ex:author1`           |`rdf:type`                        |`foaf:Person`         |
-|`ex:taxon1`            |`nhc:scientificNameAuthorship`    |`ex:author1`          |
-|`ex:identification1`   |`dwciri:toTaxon`                  |`ex:taxon1`           |
-|`ex:identification1`   |`dsw:isBasedOn`                   |`ex:humanObservation1`|
-|`ex:identification1`   |`dwciri:identifiedBy`             |`ex:identifier1`      |
-|`ex:organism1`         |`dsw:hasIdentification`           |`ex:identification1`  |
-|`ex:organism1`         |`dsw:hasOccurrence`               |`ex:occurrence1`      |
-|`ex:organism1`         |`dsw:hasDerivative`               |`ex:humanObservation` |
-|`ex:occurrence1`       |`dwciri:recordedBy`               |`ex:recorder1`        |
-|`ex:occurrence1`       |`dsw:atEvent`                     |`ex:event1`           |
-|`ex:occurrence1`       |`dsw:hasEvidence`                 |`ex:humanObservation1`|
-|`ex:occurrence1`       |`dsw:occurrenceOf`                |`ex:organism1`        |
-|`ex:event1`            |`dsw:locatedAt`                   |`ex:location1`        |
-|`ex:event1`            |`nhc:verbatimDate`                |`ex:date1`            |
-|`ex:event1`            |`dsw:eventOf`                     |`ex:occurrence1`      |
-|`ex:humanObservation1` |`dsw:isBasisForId`                |`ex:identification1`  |
-|`ex:humanObservation1` |`dsw:derivedFrom`                 |`ex:organism1`        |
-|`ex:humanObservation1` |`dsw:isEvidenceFor`               |`ex:occurrence1`      |
+|subject                | predicate                        | object               | Example(s)           
+|---                    |---                               |---                   |---
+|`ex:taxon1`            |`rdf:type`                        |`dwc:Taxon`           |`1_{1,2,3}`
+|`ex:identification1`   |`rdf:type`                        |`dwc:Identification`  |`1_{2,3}`
+|`ex:organism1`         |`rdf:type`                        |`foaf:Person`         | subject?
+|`ex:occurrence1`       |`rdf:type`                        |`dwc:Occurrence`      |`1_2`
+|`ex:event1`            |`rdf:type`                        |`dwc:Event`           |`1_2`
+|`ex:date1`             |`rdf:type`                        |`nhc:Date`            | -
+|`ex:humanObservation1` |`rdf:type`                        |`dwc:HumanObservation`|`1_2`
+|`ex:location1`         |`rdf:type`                        |`dwc:Location`        | -
+|`ex:identifier1`       |`rdf:type`                        |`foaf:Person`         | all
+|`ex:recorder1`         |`rdf:type`                        |`foaf:Person`         | all
+|`ex:author1`           |`rdf:type`                        |`foaf:Person`         | all
+|`ex:taxon1`            |`nhc:scientificNameAuthorship`    |`ex:author1`          |`2_2`
+|`ex:identification1`   |`dwciri:toTaxon`                  |`ex:taxon1`           |`1_{2,3}`
+|`ex:identification1`   |`dsw:isBasedOn`                   |`ex:humanObservation1`|`1_2`
+|`ex:identification1`   |`dwciri:identifiedBy`             |`ex:identifier1`      |`1_2`,`2_3`
+|`ex:organism1`         |`dsw:hasIdentification`           |`ex:identification1`  |`1_2`
+|`ex:organism1`         |`dsw:hasOccurrence`               |`ex:occurrence1`      |`1_2`
+|`ex:organism1`         |`dsw:hasDerivative`               |`ex:humanObservation` |`1_2`
+|`ex:occurrence1`       |`dwciri:recordedBy`               |`ex:recorder1`        | -
+|`ex:occurrence1`       |`dsw:atEvent`                     |`ex:event1`           |`1_2` 
+|`ex:occurrence1`       |`dsw:hasEvidence`                 |`ex:humanObservation1`|`1_2`
+|`ex:occurrence1`       |`dsw:occurrenceOf`                |`ex:organism1`        |`1_2`
+|`ex:event1`            |`dsw:locatedAt`                   |`ex:location1`        |`1_2`
+|`ex:event1`            |`nhc:verbatimDate`                |`ex:date1`            | -
+|`ex:event1`            |`dsw:eventOf`                     |`ex:occurrence1`      |`1_2`
+|`ex:humanObservation1` |`dsw:isBasisForId`                |`ex:identification1`  |`1_2`
+|`ex:humanObservation1` |`dsw:derivedFrom`                 |`ex:organism1`        |`1_2`
+|`ex:humanObservation1` |`dsw:isEvidenceFor`               |`ex:occurrence1`      | -
 
 If possible, any of the ex:type+identifier instances (of type Taxon, or Location) are replaced through the GUI by an existing external IRI
 
