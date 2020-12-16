@@ -1,6 +1,13 @@
-### Template for annotations
+### Templates for annotations
+In these templates only triples related to the semantic model are included. They exclude annotation triples such as ex:anno1 rdf:type oa:annotation, and triples that relate to the verbatim transcription.
 
-**Table 1.** List of mandatory triples generated with every annotation. The 1 is an identifier for the full record. Should decide how and when this number is generated. 
+**Table 1.** List of minimal mandatory triples generated with the TYPE annotation of an entity, example for taxon.
+
+|subject                | predicate                        | object    |           
+|---|---|---
+|`ex:taxon1`            |`rdf:type`                        |`dwc:Taxon`     |
+
+**Table 2.** List of minimal mandatory triples generated with every annotation of an entity from an OBSERVATION RECORD. The 1 is an identifier for the full record. Should decide how and when this number is generated so that duplicate triples can be merged (we don't want a separate graph for each entity in an observation record that is annotated)
 
 
 |subject                | predicate                        | object    |           
@@ -36,7 +43,9 @@
 
 If possible, any of the ex:type+identifier instances (of type Taxon, or Location) are replaced through the GUI by an existing external IRI
 
-Optional (but recommended) triples ADDITIONALLY generated per annotation type (depending on GUI fields that are filled in for the object. With measurement or fact, there is no extra field in the GUI, as the annotation is of a whole table or paragraph):
+### Additional enrichments
+
+Optional (but recommended) triples ADDITIONALLY generated per annotation type, applies to both TYPE and OBSERVATION RECORD annotations (depending on GUI fields that are filled in for the object. With measurement or fact, there is no extra field in the GUI, as the annotation is of a whole table or paragraph):
 
 **Taxon.**
 
@@ -78,26 +87,27 @@ Optional (but recommended) triples ADDITIONALLY generated per annotation type (d
 ### Use cases
 Field notes are collections of observation records ([`dwc:HumanObservation`](https://dwc.tdwg.org/terms/#humanobservation)) that describe the occurrence ([`dwc:Occurrence`](https://dwc.tdwg.org/terms/#occurrence)) of an organism ([`dwc:Organism`](http://rs.tdwg.org/dwc/terms/Organism)) at a certain location ([`dwc:Location`](https://dwc.tdwg.org/terms/#location)) and date ([`nhc:Date`](http://makingsense.liacs.nl/rdf/nhc-content/2018-04-04.html#Date)). An observation record most often includes  an identification ([`dwc:Identification`](https://dwc.tdwg.org/terms/#identification)) to a taxon ([`dwc:Taxon`](https://dwc.tdwg.org/terms/#taxon)), and accompanying measurements and facts ([`dwc:MeasurementOrFact`](https://dwc.tdwg.org/terms/#measurementorfact), [`UBERON:0001062`](http://purl.obolibrary.org/obo/UBERON_0001062), [`ncit:C20189`](http://purl.obolibrary.org/obo/NCIT_C20189)) that were used for identification. These observation records usually span multiple field notes, but can also be very short utterances such as on page 3: _Sci. Diard Buitenzorg_, most likely referring to the occurrence of another organism with the same identification.
 
-**Table 1.** List of examples with annotation classes and properties.
-|class| property | example |
-|---|---|---
-|`dwc:Taxon`|`rdf:type`|[`1_1`](#Example-1_1)
-||`dsw:hasIdentification`|[`1_2`](#Example-1_2)
-||`nhc:additionalIdentification`|[`1_3`](#Example-1_3)
-|`foaf:Person`|`rdf:type`|[`2_1`](#Example-2_1)
-||`nhc:scientificNameAuthorship`|[`2_2`](#Example-2_2)
-||`dwciri:identifiedBy`|[`2_3`](#Example-2_3)
-|| `dwciri:recordedBy`|[`2_4`](#Example-2_4)
-|`dwc:Location`|`rdf:type`|[`3_1`](#Example-3_1)
-|| `dsw:locatedAt`|[`3_2`](#Example-3_2)
-|`dwc:MeasurementOrFact`|`rdf:type`|[`4_1`](#Example-4_1)
-||`dsw:derivedFrom`|[`4_2`](#Example-4_2) |
-|`ncit:C20189` (propertyOrAttribute)|`rdf:type`|[`5_1`](#Example-5_1)
-||`nhc:measuresOrDescribes`|[`5_2`](#Example-5_2)|
-|`UBERON:0001062` (anatomicalEntity)|`rdf:type`|[`6_1`](#Example-6_1)
-||`nhc:measuresOrDescribes`|[`6_2`](#Example-6_2) |
-|`nhc:Date`|`rdf:type`|[`7_1`](#Example-7_1)
-||`nhc:verbatimDate`|[`7_2`](#Example-7_2)|
+**Table 1.** List of use cases with annotation classes and properties.
+
+|class| property | example | annotation type |
+|---|---|---|---|
+|`dwc:Taxon`|`rdf:type`|[`1_1`](#Example-1_1)| TYPE |
+||`dsw:hasIdentification`|[`1_2`](#Example-1_2)| OBSERVATION RECORD|
+||`nhc:additionalIdentification`|[`1_3`](#Example-1_3)| OBSERVATION RECORD|
+|`foaf:Person`|`rdf:type`|[`2_1`](#Example-2_1)| TYPE|
+||`nhc:scientificNameAuthorship`|[`2_2`](#Example-2_2)| OBSERVATION RECORD|
+||`dwciri:identifiedBy`|[`2_3`](#Example-2_3)| OBSERVATION RECORD|
+|| `dwciri:recordedBy`|[`2_4`](#Example-2_4)| OBSERVATION RECORD|
+|`dwc:Location`|`rdf:type`|[`3_1`](#Example-3_1)| TYPE|
+|| `dsw:locatedAt`|[`3_2`](#Example-3_2)| OBSERVATION RECORD|
+|`dwc:MeasurementOrFact`|`rdf:type`|[`4_1`](#Example-4_1)| TYPE|
+||`dsw:derivedFrom`|[`4_2`](#Example-4_2) | OBSERVATION RECORD|
+|`ncit:C20189` (propertyOrAttribute)|`rdf:type`|[`5_1`](#Example-5_1)| TYPE|
+||`nhc:measuresOrDescribes`|[`5_2`](#Example-5_2)| OBSERVATION RECORD|
+|`UBERON:0001062` (anatomicalEntity)|`rdf:type`|[`6_1`](#Example-6_1)|TYPE|
+||`nhc:measuresOrDescribes`|[`6_2`](#Example-6_2) | OBSERVATION RECORD|
+|`nhc:Date`|`rdf:type`|[`7_1`](#Example-7_1)|TYPE|
+||`nhc:verbatimDate`|[`7_2`](#Example-7_2)| OBSERVATION RECORD|
 
 
 ### Example 1_1
