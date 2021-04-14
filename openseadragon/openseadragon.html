@@ -10,22 +10,6 @@
   <body>
   <div id="openseadragon" style="width: 640px; height: 480px; position: relative;"></div>
   <script>
-  var sampleAnnotation = { 
-    "@context": "http://www.w3.org/ns/anno.jsonld",
-    "id": "#07475897-d2eb-4dce-aa12-ecb50771c734",
-    "type": "Annotation",
-    "body": [{
-      "type": "TextualBody",
-      "value": "Annotation"
-    }],
-    "target": {
-      "selector": {
-        "type": "FragmentSelector",
-        "conformsTo": "http://www.w3.org/TR/media-frags/",
-        "value": "xywh=200,200,10,100"
-      }
-    }
-  };
 
   window.onload = function() {
     var viewer = OpenSeadragon({
@@ -47,7 +31,9 @@
     });
 
     // Load annotations in W3C Web Annotation format
-    anno.loadAnnotations(sampleAnnotation);
+    // N.B.: In Firefox this requires setting 'security.fileuri.strict_origin_policy' to 'false'.
+    url = 'annotations.w3c.json';
+    anno.loadAnnotations(url);
     
     // Attach listeners to handle annotation events
     anno.on("createAnnotation", function(a) {
